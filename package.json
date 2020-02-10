@@ -1,0 +1,20 @@
+{
+  "name": "multiplayergame",
+  "version": "1.0.0",
+  "description": "game tutorial",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OwaisQuadri/multiplayergame.git"
+  },
+  "author": "Group 42",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OwaisQuadri/multiplayergame/issues"
+  },
+  "homepage": "https://github.com/OwaisQuadri/multiplayergame#readme"
+}
