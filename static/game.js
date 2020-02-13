@@ -61,28 +61,6 @@ document.addEventListener('keydown', function (event) {
       break;
   }
 });
-// document.addEventListener('keyup', function (event) {
-//   switch (event.keyCode) {
-//     case 65: // A
-//       action.rock1 = false;
-//       break;
-//     case 68: // D
-//       action.scissors1 = false;
-//       break;
-//     case 83: // S
-//       action.paper1 = false;
-//       break;
-//     case 37: // <-
-//       action.rock2 = false;
-//       break;
-//     case 40: // \/
-//       action.scissors2 = false;
-//       break;
-//     case 39: // ->
-//       action.paper2 = false;
-//       break;
-//   }
-// });
 socket.emit('new player');
 setInterval(function () {
   socket.emit('action', action);
