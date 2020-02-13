@@ -1,16 +1,18 @@
-var hand;
 class Player{
     
     constructor(n){
     this.hand=new Hand();
-    if (n==0){
+    this.n=n;
+    if (this.n==0){
 
     }
     }
+    
     play(state){
-        this.hand._state(state);
+        this.myHand._state(state);
     }
     current(){
-        this.hand._state();
+        this.myHand._state();
     }
 }
+module.exports=Player;
