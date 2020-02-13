@@ -76,8 +76,8 @@ socket.on('state', function (players) {
     var player = players[id];
     
     context.font="50px Arial";
-    context.fillText("Winner: ",100,300);
-    context.fillText("Player 2: ",100,200);
-    context.fillText("Player 1: ",100,100);
+    context.fillText("Winner: "+global.winner,100,300);
+    context.fillText("Player 2: "+global.hand2,100,200);
+    context.fillText("Player 1: "+global.hand1,100,100);
   }
 });
