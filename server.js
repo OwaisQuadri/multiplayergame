@@ -1,5 +1,9 @@
 // Dependencies
-
+var global={
+  hand1: null,
+  hand2:null,
+  winner:"neither player 1 or 2"
+}
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -31,42 +35,41 @@ class Server {
       });
       socket.on('action', (data) => {
         var player = players[socket.id] || {};
-        var hand1, hand2;
         if (data.rock1) {
-          hand1 = 0;//rock
+          global.hand1 = "rock";//rock
         }
         if (data.paper1) {
-          hand1 = 1;//paper
+          global.hand1 = "paper";//paper
         }
         if (data.scissors1) {
-          hand1 = 2;//scissors
+          global.hand1 = "scissors";//scissors
         }
         if (data.rock2) {
-          hand2 = 0;//rock
+          global.hand2 = "rock";//rock
         }
         if (data.paper2) {
-          hand2 = 1;//paper
+          global.hand2 = "paper";//paper
         }
         if (data.scissors2) {
-          hand2 = 2;//scissors
+          global.hand2 = "scissors";//scissors
         }
-        if (!data.rock1 && !data.scissors1 && !data.paper1) hand1 = null;
-        if (!data.rock2 && !data.scissors2 && !data.paper2) hand2 = null;
-        var winner = "neither";
-        if ((hand1 != null) && (hand2 != null)) {
-          if((hand1==0)&&(hand2==0))winner="neither";
-          if((hand1==0)&&(hand2==1))winner="player2";
-          if((hand1==0)&&(hand2==2))winner="player1";
-          if((hand1==1)&&(hand2==0))winner="player1";
-          if((hand1==1)&&(hand2==1))winner="neither";
-          if((hand1==1)&&(hand2==2))winner="player2";
-          if((hand1==2)&&(hand2==0))winner="player2";
-          if((hand1==2)&&(hand2==1))winner="player1";
-          if((hand1==2)&&(hand2==2))winner="neither";
+        if (!data.rock1 && !data.scissors1 && !data.paper1) global.hand1 = null;
+        if (!data.rock2 && !data.scissors2 && !data.paper2) global.hand2 = null;
+        if ((global.hand1 != null) && (global.hand2 != null)) {
+          if((global.hand1=="rock")&&(global.hand2=="rock"))global.winner="neither player 1 or 2";
+          if((global.hand1=="rock")&&(global.hand2=="paper"))global.winner="player 2";
+          if((global.hand1=="rock")&&(global.hand2=="scissors"))global.winner="player 1";
+          if((global.hand1=="paper")&&(global.hand2=="rock"))global.winner="player 1";
+          if((global.hand1=="paper")&&(global.hand2=="paper"))global.winner="neither player 1 or 2";
+          if((global.hand1=="paper")&&(global.hand2=="scissors"))global.winner="player 2";
+          if((global.hand1=="scissors")&&(global.hand2=="rock"))global.winner="player 2";
+          if((global.hand1=="scissors")&&(global.hand2=="paper"))global.winner="player 1";
+          if((global.hand1=="scissors")&&(global.hand2=="scissors"))global.winner="neither player 1 or 2";
           
+        }else {
+          global.winner="neither player 1 or 2";
         }
-        // console.log(winner);
-        console.log(hand1, hand2, winner);
+        console.log("player 1: ",global.hand1, ",player 2: ",global.hand2,",WINNER: ", global.winner);
 
       });
     }); setInterval(() => {

@@ -71,11 +71,13 @@ canvas.height = 600;
 var context = canvas.getContext('2d');
 socket.on('state', function (players) {
   context.clearRect(0, 0, 800, 600);
-  context.fillStyle = 'blue';
+  context.fillStyle = 'red';
   for (var id in players) {
     var player = players[id];
-    context.beginPath();
-    context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
-    context.fill();
+    
+    context.font="50px Arial";
+    context.fillText("Winner: ",100,300);
+    context.fillText("Player 2: ",100,200);
+    context.fillText("Player 1: ",100,100);
   }
 });
